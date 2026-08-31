@@ -7,11 +7,15 @@
 A clean and interactive social media card component  
 built with HTML, CSS, and JavaScript.
 
+<br>
+
+![LICODE](https://img.shields.io/badge/LICODE-5B0F1B?style=for-the-badge&labelColor=2B0B10)
+
 </div>
 
 ---
 
-## Preview
+<h2 align="center">Preview</h2>
 
 <p align="center">
   <img src="preview.png" alt="Social Media Flip Card Preview" width="800">
@@ -19,20 +23,26 @@ built with HTML, CSS, and JavaScript.
 
 ---
 
-## Built With
+<h2 align="center">Built With</h2>
 
-- HTML5
-- CSS3
-- JavaScript
-- Font Awesome
+<p align="center">
+
+HTML5 &nbsp; • &nbsp;
+CSS3 &nbsp; • &nbsp;
+JavaScript &nbsp; • &nbsp;
+Font Awesome
+
+</p>
 
 ---
 
-## Getting Started
+<h2 align="center">Getting Started</h2>
 
+<p align="center">
 Follow the steps below to use this project on your computer.
+</p>
 
-### 1. Download the Project
+### <div align="center">1. Download the Project</div>
 
 Click the green **Code** button at the top of this repository.
 
@@ -44,7 +54,9 @@ Download ZIP
 
 Extract the ZIP file after the download is complete.
 
-### 2. Open the Project
+---
+
+### <div align="center">2. Open the Project</div>
 
 Open the extracted project folder.
 
@@ -57,7 +69,9 @@ You should see:
 └── README.md
 ```
 
-### 3. Run the Project
+---
+
+### <div align="center">3. Run the Project</div>
 
 Double-click:
 
@@ -71,11 +85,11 @@ That's it. No installation or build process is required.
 
 ---
 
-## Customization
+<h2 align="center">Customization</h2>
 
 You can easily customize the content and appearance of the cards.
 
-### Change the Card Content
+### <div align="center">Change the Card Content</div>
 
 Open:
 
@@ -105,7 +119,7 @@ For example:
 
 Replace the text and link with your own content.
 
-### Change the Design
+### <div align="center">Change the Design</div>
 
 Open:
 
@@ -137,7 +151,7 @@ Change these values to create your own color scheme.
 
 ---
 
-## Project Structure
+<h2 align="center">Project Structure</h2>
 
 ```text
 01/
@@ -155,7 +169,7 @@ Change these values to create your own color scheme.
 
 ---
 
-## Font Awesome
+<h2 align="center">Font Awesome</h2>
 
 This project uses **Font Awesome** for the social media icons.
 
@@ -163,17 +177,21 @@ The icon library is loaded through a CDN, so an internet connection may be requi
 
 ---
 
-## LICODE
+<h2 align="center">LICODE</h2>
 
-Part of the **LICODE** front-end collection.
+<p align="center">
+Part of the <strong>LICODE</strong> front-end collection.
+</p>
 
-Explore more interfaces, components, experiments,  
+<p align="center">
+Explore more interfaces, components, experiments,<br>
 and web templates from LICODE.
+</p>
 
 <br>
 
 <div align="center">
 
-**Build something beautiful.**
+### **Build something beautiful.**
 
 </div>
