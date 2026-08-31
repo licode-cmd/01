@@ -163,18 +163,30 @@ The icon library is loaded through a CDN, so an internet connection may be requi
 
 ---
 
-## LICODE
+<div align="center">
 
-Part of the **LICODE** front-end collection.
+<h2>LICODE</h2>
 
-Explore more interfaces, components, experiments,  
-and web templates from LICODE.
+<p>
+  Part of the <strong>LICODE</strong> front-end collection.
+</p>
+
+<p>
+  Explore more interfaces, components, experiments,<br>
+  and web templates crafted by LICODE.
+</p>
 
 <br>
 
-<div align="center">
+<p>
+  <strong>──────────────</strong>
+</p>
 
-**Build something beautiful.**
+<h3>Build something beautiful.</h3>
+
+<p>
+  <sub>LICODE · Front-End Development · UI Design</sub>
+</p>
 
 </div>
 
