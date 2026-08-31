@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Social Cards</title>
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+  >
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="background">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <main class="container">
+    <div class="card linkedin" onclick="toggleCard(this)">
+      <div class="card-inner">
+        <div class="glow"></div>
+
+        <div class="face face1">
+          <div class="wave wave-one"></div>
+          <div class="wave wave-two"></div>
+
+          <div class="content">
+            <div class="icon">
+              <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+            </div>
+          </div>
+
+          <span class="dot dot-one"></span>
+          <span class="dot dot-two"></span>
+        </div>
+
+        <div class="face face2">
+          <div class="content">
+            <span class="label">PROFESSIONAL</span>
+
+            <h3>
+              <a href="#" target="_blank">LinkedIn</a>
+            </h3>
+
+            <p>
+              Connect, network, and build your professional portfolio.
+            </p>
+
+            <a href="#" target="_blank" class="visit">
+              Visit Profile
+              <i class="fa fa-arrow-right" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card twitter" onclick="toggleCard(this)">
+      <div class="card-inner">
+        <div class="glow"></div>
+
+        <div class="face face1">
+          <div class="wave wave-one"></div>
+          <div class="wave wave-two"></div>
+
+          <div class="content">
+            <div class="icon">
+              <i class="fa fa-twitter-square" aria-hidden="true"></i>
+            </div>
+          </div>
+
+          <span class="dot dot-one"></span>
+          <span class="dot dot-two"></span>
+        </div>
+
+        <div class="face face2">
+          <div class="content">
+            <span class="label">SOCIAL</span>
+
+            <h3>
+              <a href="#" target="_blank">Twitter</a>
+            </h3>
+
+            <p>
+              Follow updates, discover ideas, and connect with new people.
+            </p>
+
+            <a href="#" target="_blank" class="visit">
+              Visit Profile
+              <i class="fa fa-arrow-right" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card github" onclick="toggleCard(this)">
+      <div class="card-inner">
+        <div class="glow"></div>
+
+        <div class="face face1">
+          <div class="wave wave-one"></div>
+          <div class="wave wave-two"></div>
+
+          <div class="content">
+            <div class="icon">
+              <i class="fa fa-github-square" aria-hidden="true"></i>
+            </div>
+          </div>
+
+          <span class="dot dot-one"></span>
+          <span class="dot dot-two"></span>
+        </div>
+
+        <div class="face face2">
+          <div class="content">
+            <span class="label">PROJECTS</span>
+
+            <h3>
+              <a href="#" target="_blank">GitHub</a>
+            </h3>
+
+            <p>
+              Explore my code, experiments, and development projects.
+            </p>
+
+            <a href="#" target="_blank" class="visit">
+              View Projects
+              <i class="fa fa-arrow-right" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function toggleCard(clickedCard) {
+      const cards = document.querySelectorAll(".card");
+      const wasActive = clickedCard.classList.contains("active");
+
+      cards.forEach((card) => {
+        card.classList.remove("active");
+      });
+
+      if (!wasActive) {
+        clickedCard.classList.add("active");
+      }
+    }
+  </script>
+</body>
+</html>
+
