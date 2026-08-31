@@ -7,10 +7,6 @@
 A clean and interactive social media card component  
 built with HTML, CSS, and JavaScript.
 
-<br>
-
-![LICODE](https://img.shields.io/badge/LICODE-5B0F1B?style=for-the-badge&labelColor=2B0B10)
-
 </div>
 
 ---
