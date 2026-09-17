@@ -2,10 +2,6 @@
 
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:14110f,50:7a6540,100:b8934f&height=200&section=header&text=THE%20RECORD%20WALL&fontSize=52&fontColor=ece5d8&fontAlignY=50&desc=A%20rigid%203D%20record%20carousel%20%E2%80%94%20pure%20HTML%2C%20CSS%20%26%20JavaScript&descAlignY=70&descSize=16&descColor=b8934f&animation=fadeIn" width="100%"/>
 
-### No frameworks. No dependencies. Just the web.
-
-<br>
-
 <img src="preview.png" alt="The Record Wall Preview" width="900">
 
 </div>
@@ -111,8 +107,6 @@ Card size, radius, and layout adapt to the viewport on resize.
 <img src="https://img.shields.io/badge/CSS3-14110f?style=for-the-badge&logo=css3&logoColor=1572B6">
 <img src="https://img.shields.io/badge/JAVASCRIPT-14110f?style=for-the-badge&logo=javascript&logoColor=F7DF1E">
 
-<br>
-
 `NO FRAMEWORKS` · `NO DEPENDENCIES` · `PURE VANILLA`
 
 </div>
@@ -123,52 +117,41 @@ Card size, radius, and layout adapt to the viewport on resize.
 
 # 🚀 GETTING STARTED
 
-<br>
+Download the ZIP or clone the repository, extract it, then open `index.html` in your browser. No build step, no install, no dependencies — it just runs.
+
+<table>
+<tr>
+
+<td align="center" width="33%">
 
 ### 1 · DOWNLOAD
 
 Download the ZIP or clone the repository.
 
-<br>
+</td>
+
+<td align="center" width="33%">
 
 ### 2 · EXTRACT
 
 Extract the folder to your preferred location.
 
-<br>
+</td>
+
+<td align="center" width="33%">
 
 ### 3 · OPEN
 
-Open `index.html` in your browser — that's it.
+Open `index.html` in your browser.
 
-<br>
+</td>
 
-> **No build step. No install. Just open and go.**
-
-</div>
-
----
-
-<div align="center">
-
-# ✦ PROJECT STRUCTURE
-
-the-record-wall/
-├── index.html
-├── preview.png
-└── images/
-├── 1.jpg
-├── 2.jpg
-├── ...
-└── 18.jpg
-
-text
+</tr>
+</table>
 
 </div>
 
 ---
-
-
 
 <div align="center">
 
@@ -176,16 +159,12 @@ text
 
 This project is part of an ongoing series of front-end experiments exploring **design**, **code**, **interaction**, and **motion**.
 
-<br>
-
 <a href="https://github.com/licode-cmd">
 <img src="https://img.shields.io/badge/EXPLORE_MORE_PROJECTS-5B0F1B?style=for-the-badge&logo=github&logoColor=F3E8D0">
 </a>
-
 <a href="https://www.youtube.com/@licodee">
 <img src="https://img.shields.io/badge/WATCH_THE_BUILD-5B0F1B?style=for-the-badge&logo=youtube&logoColor=F3E8D0">
 </a>
-
 <a href="https://www.tiktok.com/@nihcode">
 <img src="https://img.shields.io/badge/FOLLOW_THE_WORK-5B0F1B?style=for-the-badge&logo=tiktok&logoColor=F3E8D0">
 </a>
