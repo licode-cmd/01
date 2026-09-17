@@ -1,7 +1,5 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:14110f,50:7a6540,100:b8934f&height=200&section=header&text=THE%20RECORD%20WALL&fontSize=52&fontColor=ece5d8&fontAlignY=50&desc=A%20rigid%203D%20record%20carousel%20%E2%80%94%20pure%20HTML%2C%20CSS%20%26%20JavaScript&descAlignY=70&descSize=16&descColor=b8934f&animation=fadeIn" width="100%"/>
-
 <img src="preview.png" alt="The Record Wall Preview" width="900">
 
 </div>
