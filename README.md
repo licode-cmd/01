@@ -1,62 +1,196 @@
-# Record Wall
+<div align="center">
 
-A 3D record carousel built with HTML, CSS, and JavaScript.
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:14110f,50:7a6540,100:b8934f&height=200&section=header&text=THE%20RECORD%20WALL&fontSize=52&fontColor=ece5d8&fontAlignY=50&desc=A%20rigid%203D%20record%20carousel%20%E2%80%94%20pure%20HTML%2C%20CSS%20%26%20JavaScript&descAlignY=70&descSize=16&descColor=b8934f&animation=fadeIn" width="100%"/>
 
-## Preview
+<img src="preview.png" alt="The Record Wall Preview" width="900">
 
-<img src="preview.png" alt="Record Wall Preview" width="100%">
-
-## Features
-
-- 3D record carousel
-- Smooth auto rotation
-- Drag and swipe interaction
-- Previous and next navigation
-- Keyboard navigation
-- Responsive layout
-- Glass reflection effect
-- Customizable record cards
-- Pure HTML, CSS, and JavaScript
-- No framework required
-
-## Built With
-
-- HTML5
-- CSS3
-- JavaScript
-
-## Getting Started
-
-1. Click the **Code** button on GitHub.
-2. Select **Download ZIP**.
-3. Extract the ZIP file.
-4. Open `index.html` in your browser.
-
-No installation or build process required.
-
-## Customization
-
-You can easily customize:
-
-- Record images
-- Titles
-- Artist names
-- Colors
-- Card styles
-- Carousel settings
-
-All data and styling can be edited directly in the source files.
-
-## License
-
-Free to use and customize for your own projects.
-
-Please do not resell or redistribute the original template as your own.
+</div>
 
 ---
 
-### LICODE
+<div align="center">
 
-Frontend templates crafted with HTML, CSS & JavaScript.
+# ✦ OVERVIEW
 
-**Free Template • Premium Template**
+**The Record Wall** is a rigid 3D record carousel built with pure HTML, CSS, and vanilla JavaScript.
+
+The shelf drifts past on its own — you can drag it, swipe it, or use the arrow keys to take over. Each sleeve is a flat, rigid rectangle. The curve comes only from how the cards are angled and spaced in 3D space, never from bending the sleeve itself.
+
+> **Rigid panels · Perspective + RotateY + TranslateZ only.**
+
+</div>
+
+---
+
+<div align="center">
+
+# ✦ FEATURES
+
+<table>
+<tr>
+
+<td align="center" width="33%">
+
+### ◉
+
+**3D CAROUSEL**
+
+Cards positioned in a rigid circular formation using `rotateY` and `translateZ`.
+
+</td>
+
+<td align="center" width="33%">
+
+### ◉
+
+**AUTO ROTATION**
+
+The wall drifts on its own, driven by `requestAnimationFrame`.
+
+</td>
+
+<td align="center" width="33%">
+
+### ◉
+
+**DRAG & SWIPE**
+
+Grab and spin the wall with mouse or touch. Snaps to the nearest record.
+
+</td>
+
+</tr>
+<tr>
+
+<td align="center" width="33%">
+
+### ◉
+
+**KEYBOARD NAVIGATION**
+
+Use `←` and `→` arrow keys to move between records.
+
+</td>
+
+<td align="center" width="33%">
+
+### ◉
+
+**GLASS REFLECTION**
+
+A mirrored, masked reflection sits beneath each sleeve for depth.
+
+</td>
+
+<td align="center" width="33%">
+
+### ◉
+
+**RESPONSIVE**
+
+Card size, radius, and layout adapt to the viewport on resize.
+
+</td>
+
+</tr>
+</table>
+
+</div>
+
+---
+
+<div align="center">
+
+# ⚡ TECH STACK
+
+<img src="https://img.shields.io/badge/HTML5-14110f?style=for-the-badge&logo=html5&logoColor=E34F26">
+<img src="https://img.shields.io/badge/CSS3-14110f?style=for-the-badge&logo=css3&logoColor=1572B6">
+<img src="https://img.shields.io/badge/JAVASCRIPT-14110f?style=for-the-badge&logo=javascript&logoColor=F7DF1E">
+
+`NO FRAMEWORKS` · `NO DEPENDENCIES` · `PURE VANILLA`
+
+</div>
+
+---
+
+<div align="center">
+
+# 🚀 GETTING STARTED
+
+Download the ZIP or clone the repository, extract it, then open `index.html` in your browser. No build step, no install, no dependencies — it just runs.
+
+<table>
+<tr>
+
+<td align="center" width="33%">
+
+### 1 · DOWNLOAD
+
+Download the ZIP or clone the repository.
+
+</td>
+
+<td align="center" width="33%">
+
+### 2 · EXTRACT
+
+Extract the folder to your preferred location.
+
+</td>
+
+<td align="center" width="33%">
+
+### 3 · OPEN
+
+Open `index.html` in your browser.
+
+</td>
+
+</tr>
+</table>
+
+</div>
+
+---
+
+<div align="center">
+
+# 📄 LICENSE
+
+**Free to use and customize for your own projects.**
+
+Please do not resell or redistribute the original template as your own.
+
+</div>
+
+---
+
+<div align="center">
+
+# 📦 PART OF THE LICODE SERIES
+
+This project is part of an ongoing series of front-end experiments exploring **design**, **code**, **interaction**, and **motion**.
+
+<a href="https://github.com/licode-cmd">
+<img src="https://img.shields.io/badge/EXPLORE_MORE_PROJECTS-5B0F1B?style=for-the-badge&logo=github&logoColor=F3E8D0">
+</a>
+<a href="https://www.youtube.com/@licodee">
+<img src="https://img.shields.io/badge/WATCH_THE_BUILD-5B0F1B?style=for-the-badge&logo=youtube&logoColor=F3E8D0">
+</a>
+<a href="https://www.tiktok.com/@nihcode">
+<img src="https://img.shields.io/badge/FOLLOW_THE_WORK-5B0F1B?style=for-the-badge&logo=tiktok&logoColor=F3E8D0">
+</a>
+
+</div>
+
+---
+
+<div align="center">
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:b8934f,50:7a6540,100:14110f&height=140&section=footer&text=LICODE&fontSize=28&fontColor=ece5d8&fontAlignY=65"/>
+
+### BUILT SOMETHING BEAUTIFUL.
+
+`FRONT-END` · `UI` · `INTERACTION` · `CREATIVE WEB`
+
+</div>
