@@ -1,0 +1,1071 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Record Wall — Rigid Card Carousel</title>
+
+<style>
+:root {
+  --bg-0: #14110f;
+  --paper: #ece5d8;
+  --brass: #b8934f;
+  --brass-dim: #7a6540;
+  --card-w: 220px;
+  --card-h: 330px;
+  --stage-h: calc(var(--card-h) * 1.55);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  width: 100%;
+  min-height: 100%;
+  background: var(--bg-0);
+  background-image:
+    radial-gradient(
+      ellipse at 50% 15%,
+      rgba(184,147,79,0.10),
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse at 50% 100%,
+      rgba(0,0,0,0.55),
+      transparent 60%
+    );
+  color: var(--paper);
+  font-family:
+    "Iowan Old Style",
+    "Georgia",
+    "Times New Roman",
+    serif;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.wrap {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px 10px;
+}
+
+header {
+  text-align: center;
+  max-width: 520px;
+  margin-bottom: 6px;
+  position: relative;
+  z-index: 20;
+}
+
+.kicker {
+  font-family: "Courier New", monospace;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  color: var(--brass);
+  margin: 0 0 10px;
+}
+
+h1 {
+  font-size: clamp(28px, 4.2vw, 40px);
+  font-weight: 400;
+  line-height: 1.15;
+  margin: 0 0 12px;
+}
+
+.sub {
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: rgba(236,229,216,0.62);
+  margin: 0;
+}
+
+.stage {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  height: var(--stage-h);
+  margin-top: -5px;
+  perspective: 1800px;
+  perspective-origin: 50% 42%;
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+  overflow: visible;
+}
+
+.stage.grabbing {
+  cursor: grabbing;
+}
+
+.cylinder {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 0;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+
+.card {
+  position: absolute;
+  top: 43%;
+  left: 0;
+  width: var(--card-w);
+  height: var(--card-h);
+  margin:
+    calc(var(--card-h) / -2)
+    0
+    0
+    calc(var(--card-w) / -2);
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  will-change: transform, opacity;
+  transition: box-shadow 0.25s ease;
+}
+
+.card .face {
+  position: absolute;
+  inset: 0;
+  border-radius: 3px;
+  overflow: hidden;
+  box-shadow:
+    0 18px 40px rgba(0,0,0,0.5),
+    0 2px 0 rgba(255,255,255,0.04) inset;
+  border: 1px solid rgba(236,229,216,0.08);
+}
+
+.card .art {
+  position: absolute;
+  inset: 0;
+}
+
+.card .art svg,
+.card .art img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.card .label {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 10px 12px 11px;
+  background:
+    linear-gradient(
+      to top,
+      rgba(10,8,7,0.88) 10%,
+      rgba(10,8,7,0) 100%
+    );
+}
+
+.card .label .t {
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  color: var(--paper);
+  margin: 0 0 2px;
+}
+
+.card .label .a {
+  font-family: "Courier New", monospace;
+  font-size: 10px;
+  color: rgba(236,229,216,0.6);
+  margin: 0;
+}
+
+.card.is-center .face {
+  box-shadow:
+    0 26px 55px rgba(0,0,0,0.6),
+    0 0 0 1px rgba(184,147,79,0.5),
+    0 2px 0 rgba(255,255,255,0.05) inset;
+}
+
+.card .reflection {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  width: 100%;
+  height: calc(var(--card-h) * 0.42);
+  overflow: hidden;
+  border-radius: 0 0 3px 3px;
+  opacity: 0.58;
+  pointer-events: none;
+  -webkit-mask-image:
+    linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.92) 0%,
+      rgba(0,0,0,0.70) 16%,
+      rgba(0,0,0,0.42) 42%,
+      rgba(0,0,0,0.16) 72%,
+      rgba(0,0,0,0) 100%
+    );
+  mask-image:
+    linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.92) 0%,
+      rgba(0,0,0,0.70) 16%,
+      rgba(0,0,0,0.42) 42%,
+      rgba(0,0,0,0.16) 72%,
+      rgba(0,0,0,0) 100%
+    );
+  filter: blur(0.15px);
+}
+
+.card .reflection::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(20,17,15,0.02) 0%,
+      rgba(20,17,15,0.18) 28%,
+      rgba(20,17,15,0.52) 65%,
+      rgba(20,17,15,0.94) 100%
+    );
+  pointer-events: none;
+}
+
+.card .reflection .art {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 100%;
+  transform: scaleY(-1);
+  transform-origin: center center;
+  filter:
+    brightness(0.92)
+    contrast(0.96);
+}
+
+.card .reflection .art img,
+.card .reflection .art svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card .reflection .label {
+  display: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 10px 12px 11px;
+  background:
+    linear-gradient(
+      to top,
+      rgba(5,4,3,0.68),
+      rgba(5,4,3,0)
+    );
+}
+
+.card .reflection .label .t {
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  color: rgba(236,229,216,0.65);
+  margin: 0 0 2px;
+}
+
+.card .reflection .label .a {
+  font-family: "Courier New", monospace;
+  font-size: 10px;
+  color: rgba(236,229,216,0.38);
+  margin: 0;
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  top: calc(100% + 8px);
+  height: 18px;
+  background:
+    radial-gradient(
+      ellipse at center,
+      rgba(236,229,216,0.16),
+      rgba(184,147,79,0.08) 35%,
+      transparent 75%
+    );
+  filter: blur(8px);
+  opacity: 0.65;
+  pointer-events: none;
+}
+
+.shelf {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  height: 2px;
+  margin-top: -2px;
+  background:
+    linear-gradient(
+      to right,
+      transparent,
+      var(--brass-dim) 12%,
+      var(--brass-dim) 88%,
+      transparent
+    );
+  opacity: 0.55;
+  box-shadow:
+    0 0 12px rgba(184,147,79,0.10);
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 16px;
+  position: relative;
+  z-index: 20;
+}
+
+.nav-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid rgba(236,229,216,0.22);
+  background: rgba(236,229,216,0.04);
+  color: var(--paper);
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    transform 0.15s ease;
+}
+
+.nav-btn:hover {
+  border-color: var(--brass);
+  background: rgba(184,147,79,0.12);
+}
+
+.nav-btn:active {
+  transform: scale(0.93);
+}
+
+.track-info {
+  min-width: 200px;
+  text-align: center;
+}
+
+.track-info .num {
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  color: var(--brass);
+  letter-spacing: 0.08em;
+}
+
+.track-info .name {
+  font-size: 16px;
+  margin-top: 2px;
+}
+
+footer {
+  margin-top: 8px;
+  font-family: "Courier New", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.05em;
+  color: rgba(236,229,216,0.35);
+  text-align: center;
+  position: relative;
+  z-index: 20;
+}
+
+@media (max-width: 900px) {
+  .wrap {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  :root {
+    --stage-h: calc(var(--card-h) * 1.55);
+  }
+
+  .stage {
+    height: var(--stage-h);
+  }
+
+  .controls {
+    gap: 12px;
+  }
+
+  .track-info {
+    min-width: 160px;
+  }
+}
+
+@media (max-width: 600px) {
+  :root {
+    --stage-h: calc(var(--card-h) * 1.55);
+  }
+
+  .stage {
+    height: var(--stage-h);
+  }
+
+  .track-info {
+    min-width: 140px;
+  }
+
+  .track-info .name {
+    font-size: 14px;
+  }
+
+  footer {
+    font-size: 9px;
+  }
+}
+
+@media (max-width: 480px) {
+  .controls {
+    gap: 10px;
+  }
+
+  .track-info {
+    min-width: 120px;
+  }
+}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+  <header>
+    <p class="kicker">SIDE&nbsp;A&nbsp;/&nbsp;BROWSING&nbsp;BIN</p>
+
+    <h1>The Record Wall</h1>
+
+    <p class="sub">
+      The shelf drifts past on its own — drag it or use the arrows
+      to take over. Each sleeve is a flat, rigid rectangle. the curve
+      comes only from how they're angled and spaced in 3D, never from
+      bending the sleeve itself.
+    </p>
+  </header>
+
+  <div class="stage" id="stage">
+    <div class="cylinder" id="cylinder"></div>
+  </div>
+
+  <div class="shelf"></div>
+
+  <div class="controls">
+    <button class="nav-btn" id="prevBtn" aria-label="Previous record">
+      &#8592;
+    </button>
+
+    <div class="track-info">
+      <div class="num" id="trackNum">01 / 18</div>
+      <div class="name" id="trackName">—</div>
+    </div>
+
+    <button class="nav-btn" id="nextBtn" aria-label="Next record">
+      &#8594;
+    </button>
+  </div>
+
+  <footer>
+    RIGID&nbsp;PANELS&nbsp;·&nbsp;PERSPECTIVE&nbsp;+&nbsp;ROTATE-Y&nbsp;+&nbsp;TRANSLATE-Z&nbsp;ONLY
+  </footer>
+</div>
+
+<script>
+(function () {
+  var records = [
+    {
+      title: "Low Tide Suite",
+      artist: "M. Okafor Trio",
+      c1: "#a1512f",
+      c2: "#3c2418",
+      shape: "waves",
+      img: "images/1.jpg"
+    },
+    {
+      title: "Glass Hour",
+      artist: "Verena Holt",
+      c1: "#4a6b5a",
+      c2: "#1c2a22",
+      shape: "rings",
+      img: "images/4.jpg"
+    },
+    {
+      title: "Copper Static",
+      artist: "Distant Radios",
+      c1: "#b8934f",
+      c2: "#3a2c14",
+      shape: "lines",
+      img: "images/2.jpg"
+    },
+    {
+      title: "Nine Empty Rooms",
+      artist: "Kaspar Lien",
+      c1: "#5c4a8f",
+      c2: "#221a3a",
+      shape: "grid",
+      img: "images/5.jpg"
+    },
+    {
+      title: "Marigold, Slowly",
+      artist: "Ada + The Fold",
+      c1: "#c46a2d",
+      c2: "#3a1f0e",
+      shape: "sun",
+      img: "images/3.jpg"
+    },
+    {
+      title: "Harbor Static",
+      artist: "Sanne Vos",
+      c1: "#2d5c66",
+      c2: "#0f2226",
+      shape: "waves",
+      img: "images/6.jpg"
+    },
+    {
+      title: "The Long Exhale",
+      artist: "Julio Menendes",
+      c1: "#8f4a5c",
+      c2: "#2a1218",
+      shape: "rings",
+      img: "images/10.jpg"
+    },
+    {
+      title: "Paper Weather",
+      artist: "Root & Rain",
+      c1: "#6b7a3c",
+      c2: "#1e2412",
+      shape: "lines",
+      img: "images/7.jpg"
+    },
+    {
+      title: "Amber Line",
+      artist: "Corvid Hour",
+      c1: "#a67c2e",
+      c2: "#332305",
+      shape: "grid",
+      img: "images/11.jpg"
+    },
+    {
+      title: "Quiet Ledger",
+      artist: "Bram & Soo",
+      c1: "#6a4a3a",
+      c2: "#20130d",
+      shape: "lines",
+      img: "images/8.jpg"
+    },
+    {
+      title: "Dust & Daylight",
+      artist: "Nadia Wren",
+      c1: "#b06a3c",
+      c2: "#33190c",
+      shape: "sun",
+      img: "images/12.jpg"
+    },
+    {
+      title: "Slow Static Bloom",
+      artist: "Otherside",
+      c1: "#3c5c8f",
+      c2: "#101c33",
+      shape: "rings",
+      img: "images/9.jpg"
+    },
+    {
+      title: "Rented Rooms",
+      artist: "Callum Reyes",
+      c1: "#7a4a6b",
+      c2: "#241019",
+      shape: "grid",
+      img: "images/13.jpg"
+    },
+    {
+      title: "The Last Ferry",
+      artist: "M. Okafor Trio",
+      c1: "#2f6b5c",
+      c2: "#0d1f19",
+      shape: "waves",
+      img: "images/14.jpg"
+    },
+    {
+      title: "Tin Roof Weather",
+      artist: "Root & Rain",
+      c1: "#8f6a2d",
+      c2: "#2a1f0c",
+      shape: "lines",
+      img: "images/15.jpg"
+    },
+    {
+      title: "Half-Lit Kitchen",
+      artist: "Sanne Vos",
+      c1: "#5c3c6a",
+      c2: "#1a0f21",
+      shape: "sun",
+      img: "images/16.jpg"
+    },
+    {
+      title: "Coastal Drift",
+      artist: "Verena Holt",
+      c1: "#3c7a6b",
+      c2: "#0f231e",
+      shape: "waves",
+      img: "images/17.jpg"
+    },
+    {
+      title: "Static & Salt",
+      artist: "Corvid Hour",
+      c1: "#a1512f",
+      c2: "#2d160b",
+      shape: "grid",
+      img: "images/18.jpg"
+    }
+  ];
+
+  function svgFor(rec, i) {
+    var grad = "g" + i;
+
+    var base =
+      '<defs>' +
+        '<linearGradient id="' + grad + '" x1="0" y1="0" x2="1" y2="1">' +
+          '<stop offset="0%" stop-color="' + rec.c1 + '"/>' +
+          '<stop offset="100%" stop-color="' + rec.c2 + '"/>' +
+        '</linearGradient>' +
+      '</defs>' +
+      '<rect width="200" height="300" fill="url(#' + grad + ')"/>';
+
+    var deco = "";
+
+    if (rec.shape === "waves") {
+      deco =
+        '<path d="M0,170 Q50,140 100,170 T200,170 V300 H0 Z" fill="' + rec.c2 + '" opacity="0.55"/>' +
+        '<path d="M0,210 Q50,185 100,210 T200,210 V300 H0 Z" fill="' + rec.c2 + '" opacity="0.4"/>';
+    } else if (rec.shape === "rings") {
+      deco =
+        '<circle cx="100" cy="140" r="70" fill="none" stroke="' + rec.c2 + '" stroke-width="2" opacity="0.5"/>' +
+        '<circle cx="100" cy="140" r="45" fill="none" stroke="' + rec.c2 + '" stroke-width="2" opacity="0.6"/>' +
+        '<circle cx="100" cy="140" r="20" fill="' + rec.c2 + '" opacity="0.5"/>';
+    } else if (rec.shape === "lines") {
+      deco =
+        '<g stroke="' + rec.c2 + '" stroke-width="2" opacity="0.45">' +
+          '<line x1="0" y1="60" x2="200" y2="35"/>' +
+          '<line x1="0" y1="115" x2="200" y2="95"/>' +
+          '<line x1="0" y1="175" x2="200" y2="160"/>' +
+          '<line x1="0" y1="235" x2="200" y2="225"/>' +
+        '</g>';
+    } else if (rec.shape === "grid") {
+      deco =
+        '<g stroke="' + rec.c2 + '" stroke-width="1.5" opacity="0.4">' +
+          '<line x1="50" y1="0" x2="50" y2="300"/>' +
+          '<line x1="100" y1="0" x2="100" y2="300"/>' +
+          '<line x1="150" y1="0" x2="150" y2="300"/>' +
+          '<line x1="0" y1="75" x2="200" y2="75"/>' +
+          '<line x1="0" y1="150" x2="200" y2="150"/>' +
+          '<line x1="0" y1="225" x2="200" y2="225"/>' +
+        '</g>';
+    } else if (rec.shape === "sun") {
+      deco =
+        '<circle cx="100" cy="110" r="34" fill="' + rec.c2 + '" opacity="0.55"/>' +
+        '<line x1="0" y1="210" x2="200" y2="210" stroke="' + rec.c2 + '" stroke-width="2" opacity="0.4"/>' +
+        '<line x1="0" y1="240" x2="200" y2="240" stroke="' + rec.c2 + '" stroke-width="2" opacity="0.3"/>';
+    }
+
+    return (
+      '<svg viewBox="0 0 200 300" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">' +
+        base +
+        deco +
+      '</svg>'
+    );
+  }
+
+  function artHTML(rec, i) {
+    if (rec.img) {
+      return (
+        '<img src="' + rec.img + '" alt="' + rec.title + '" ' +
+        'onerror="this.parentElement.innerHTML=' +
+        JSON.stringify(svgFor(rec, i)).replace(/"/g, "&quot;") +
+        ';">'
+      );
+    }
+
+    return svgFor(rec, i);
+  }
+
+  var stage = document.getElementById("stage");
+  var cylinder = document.getElementById("cylinder");
+  var trackNum = document.getElementById("trackNum");
+  var trackName = document.getElementById("trackName");
+  var prevBtn = document.getElementById("prevBtn");
+  var nextBtn = document.getElementById("nextBtn");
+  var N = records.length;
+
+  var ANGLE_STEP = 360 / N;
+  var cardW = 0;
+  var radius = 0;
+  var currentAngle = 0;
+  var activeIndex = 0;
+  var DEG_PER_SEC = ANGLE_STEP / 6;
+  var autoRunning = false;
+  var rafId = null;
+  var lastTime = null;
+  var manualTransitionUntil = 0;
+
+  function computeSizes() {
+    var viewportWidth = window.innerWidth;
+
+    cardW = Math.max(
+      95,
+      Math.min(
+        240,
+        viewportWidth * 0.145
+      )
+    );
+
+    var cardH = cardW * 1.5;
+
+    document.documentElement.style.setProperty(
+      "--card-w",
+      cardW + "px"
+    );
+
+    document.documentElement.style.setProperty(
+      "--card-h",
+      cardH + "px"
+    );
+
+    radius = Math.max(
+      300,
+      Math.min(
+        850,
+        viewportWidth * 0.50
+      )
+    );
+  }
+
+  computeSizes();
+
+  records.forEach(function (rec, i) {
+    var card = document.createElement("div");
+    card.className = "card";
+
+    var face = document.createElement("div");
+    face.className = "face";
+
+    var art = document.createElement("div");
+    art.className = "art";
+    art.innerHTML = artHTML(rec, i);
+
+    var label = document.createElement("div");
+    label.className = "label";
+    label.innerHTML =
+      '<p class="t">' + rec.title + '</p>' +
+      '<p class="a">' + rec.artist + '</p>';
+
+    face.appendChild(art);
+    face.appendChild(label);
+
+    var reflection = document.createElement("div");
+    reflection.className = "reflection";
+
+    var reflectionArt = document.createElement("div");
+    reflectionArt.className = "art";
+    reflectionArt.innerHTML = artHTML(rec, i);
+
+    var reflectionLabel = document.createElement("div");
+    reflectionLabel.className = "label";
+    reflectionLabel.innerHTML =
+      '<p class="t">' + rec.title + '</p>' +
+      '<p class="a">' + rec.artist + '</p>';
+
+    reflection.appendChild(reflectionArt);
+    reflection.appendChild(reflectionLabel);
+
+    card.appendChild(face);
+    card.appendChild(reflection);
+    cylinder.appendChild(card);
+  });
+
+  var cards = cylinder.querySelectorAll(".card");
+
+  function placeCards() {
+    cards.forEach(function (card, i) {
+      card.style.transform =
+        "rotateY(" +
+        (i * ANGLE_STEP) +
+        "deg) translateZ(" +
+        radius +
+        "px)";
+    });
+  }
+
+  placeCards();
+
+  function applyAngle() {
+    cylinder.style.transform =
+      "translateZ(-" +
+      radius +
+      "px) rotateY(" +
+      currentAngle +
+      "deg)";
+
+    cards.forEach(function (card, i) {
+      var total = currentAngle + i * ANGLE_STEP;
+      var rad = (total * Math.PI) / 180;
+      var cosA = Math.cos(rad);
+
+      var opacity = Math.max(
+        0,
+        Math.min(
+          1,
+          (cosA + 0.15) / 0.65
+        )
+      );
+
+      card.style.opacity = opacity;
+      card.style.pointerEvents =
+        opacity < 0.05 ? "none" : "auto";
+
+      card.style.zIndex = String(
+        Math.round(cosA * 1000)
+      );
+    });
+
+    var normalized =
+      ((-currentAngle % 360) + 360) % 360;
+
+    var idx =
+      Math.round(normalized / ANGLE_STEP) % N;
+
+    idx = ((idx % N) + N) % N;
+
+    if (idx !== activeIndex) {
+      activeIndex = idx;
+
+      trackNum.textContent =
+        String(idx + 1).padStart(2, "0") +
+        " / " +
+        String(N).padStart(2, "0");
+
+      trackName.textContent =
+        records[idx].title;
+
+      cards.forEach(function (c, i) {
+        c.classList.toggle(
+          "is-center",
+          i === idx
+        );
+      });
+    }
+  }
+
+  function tick(now) {
+    if (lastTime === null) {
+      lastTime = now;
+    }
+
+    var dt = (now - lastTime) / 1000;
+    lastTime = now;
+
+    if (autoRunning) {
+      currentAngle -= DEG_PER_SEC * dt;
+      applyAngle();
+    }
+
+    rafId = requestAnimationFrame(tick);
+  }
+
+  rafId = requestAnimationFrame(tick);
+
+  function startAuto() {
+    autoRunning = true;
+    lastTime = null;
+  }
+
+  function stopAuto() {
+    autoRunning = false;
+  }
+
+  function withTransition(fn, duration) {
+    cylinder.style.transition =
+      "transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1)";
+
+    fn();
+
+    window.clearTimeout(manualTransitionUntil);
+
+    manualTransitionUntil = window.setTimeout(
+      function () {
+        cylinder.style.transition = "none";
+        startAuto();
+      },
+      duration
+    );
+  }
+
+  function goTo(index) {
+    stopAuto();
+
+    var delta = index - activeIndex;
+
+    if (delta > N / 2) {
+      delta -= N;
+    }
+
+    if (delta < -N / 2) {
+      delta += N;
+    }
+
+    withTransition(
+      function () {
+        currentAngle -= delta * ANGLE_STEP;
+        applyAngle();
+      },
+      650
+    );
+  }
+
+  prevBtn.addEventListener("click", function () {
+    goTo((activeIndex - 1 + N) % N);
+  });
+
+  nextBtn.addEventListener("click", function () {
+    goTo((activeIndex + 1) % N);
+  });
+
+  var dragging = false;
+  var startX = 0;
+  var startAngleDrag = 0;
+
+  function pointerDown(x) {
+    dragging = true;
+    startX = x;
+    startAngleDrag = currentAngle;
+
+    stage.classList.add("grabbing");
+    cylinder.style.transition = "none";
+
+    stopAuto();
+  }
+
+  function pointerMove(x) {
+    if (!dragging) return;
+
+    var dx = x - startX;
+
+    currentAngle =
+      startAngleDrag +
+      dx * 0.3;
+
+    applyAngle();
+  }
+
+  function pointerUp() {
+    if (!dragging) return;
+
+    dragging = false;
+    stage.classList.remove("grabbing");
+
+    var nearest =
+      Math.round(
+        (-currentAngle) / ANGLE_STEP
+      ) % N;
+
+    nearest = ((nearest % N) + N) % N;
+
+    goTo(nearest);
+  }
+
+  stage.addEventListener("mousedown", function (e) {
+    pointerDown(e.clientX);
+  });
+
+  window.addEventListener("mousemove", function (e) {
+    pointerMove(e.clientX);
+  });
+
+  window.addEventListener("mouseup", pointerUp);
+
+  stage.addEventListener(
+    "touchstart",
+    function (e) {
+      pointerDown(e.touches[0].clientX);
+    },
+    {
+      passive: true
+    }
+  );
+
+  stage.addEventListener(
+    "touchmove",
+    function (e) {
+      pointerMove(e.touches[0].clientX);
+    },
+    {
+      passive: true
+    }
+  );
+
+  stage.addEventListener("touchend", pointerUp);
+
+  stage.addEventListener("keydown", function (e) {
+    if (e.key === "ArrowRight") {
+      goTo((activeIndex + 1) % N);
+    }
+
+    if (e.key === "ArrowLeft") {
+      goTo((activeIndex - 1 + N) % N);
+    }
+  });
+
+  stage.tabIndex = 0;
+
+  stage.addEventListener("mouseenter", stopAuto);
+
+  stage.addEventListener("mouseleave", function () {
+    if (!dragging) {
+      startAuto();
+    }
+  });
+
+  var resizeTimer = null;
+
+  window.addEventListener("resize", function () {
+    window.clearTimeout(resizeTimer);
+
+    resizeTimer = window.setTimeout(
+      function () {
+        computeSizes();
+        placeCards();
+        applyAngle();
+      },
+      120
+    );
+  });
+
+  applyAngle();
+  startAuto();
+})();
+</script>
+</body>
+</html>
