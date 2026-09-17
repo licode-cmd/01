@@ -1,7 +1,5 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:14110f,50:7a6540,100:b8934f&height=200&section=header&text=THE%20RECORD%20WALL&fontSize=52&fontColor=ece5d8&fontAlignY=50&desc=A%20rigid%203D%20record%20carousel%20%E2%80%94%20pure%20HTML%2C%20CSS%20%26%20JavaScript&descAlignY=70&descSize=16&descColor=b8934f&animation=fadeIn" width="100%"/>
-
 <img src="preview.png" alt="The Record Wall Preview" width="900">
 
 </div>
@@ -16,7 +14,6 @@
 
 The shelf drifts past on its own — you can drag it, swipe it, or use the arrow keys to take over. Each sleeve is a flat, rigid rectangle. The curve comes only from how the cards are angled and spaced in 3D space, never from bending the sleeve itself.
 
-> **Rigid panels · Perspective + RotateY + TranslateZ only.**
 
 </div>
 
@@ -180,17 +177,5 @@ This project is part of an ongoing series of front-end experiments exploring **d
 <a href="https://www.tiktok.com/@nihcode">
 <img src="https://img.shields.io/badge/FOLLOW_THE_WORK-5B0F1B?style=for-the-badge&logo=tiktok&logoColor=F3E8D0">
 </a>
-
-</div>
-
----
-
-<div align="center">
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:b8934f,50:7a6540,100:14110f&height=140&section=footer&text=LICODE&fontSize=28&fontColor=ece5d8&fontAlignY=65"/>
-
-### BUILT SOMETHING BEAUTIFUL.
-
-`FRONT-END` · `UI` · `INTERACTION` · `CREATIVE WEB`
 
 </div>
