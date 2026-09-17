@@ -169,14 +169,3 @@ This project is part of an ongoing series of front-end experiments exploring **d
 
 </div>
 
----
-
-<div align="center">
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:b8934f,50:7a6540,100:14110f&height=140&section=footer&text=LICODE&fontSize=28&fontColor=ece5d8&fontAlignY=65"/>
-
-### BUILT SOMETHING BEAUTIFUL.
-
-`FRONT-END` · `UI` · `INTERACTION` · `CREATIVE WEB`
-
-</div>
