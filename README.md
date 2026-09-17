@@ -152,6 +152,7 @@ Open `index.html` in your browser — that's it.
 <div align="center">
 
 # ✦ PROJECT STRUCTURE
+
 the-record-wall/
 ├── index.html
 ├── preview.png
@@ -166,6 +167,8 @@ text
 </div>
 
 ---
+
+
 
 <div align="center">
 
